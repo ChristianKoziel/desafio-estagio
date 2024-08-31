@@ -9,18 +9,15 @@ public class FaturamentoPorEstado {
         JSONParser parser = new JSONParser();
 
         try {
-            // Lê o arquivo JSON
             FileReader reader = new FileReader("faturamento.json");
             JSONObject jsonObject = (JSONObject) parser.parse(reader);
             JSONObject faturamento = (JSONObject) jsonObject.get("faturamento");
 
-            // Cálculo do faturamento total
             double totalFaturamento = 0;
             for (Object key : faturamento.keySet()) {
                 totalFaturamento += (double) faturamento.get(key);
             }
 
-            // Cálculo e impressão do percentual de cada estado
             System.out.println("Percentual de representação de cada estado no faturamento total:");
             for (Object key : faturamento.keySet()) {
                 String estado = (String) key;
